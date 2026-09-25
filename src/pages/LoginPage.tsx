@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
+import { getInitials } from '../utils/initials';
 import {
   GraduationCap,
   ArrowRight,
@@ -78,7 +79,7 @@ export const LoginPage: React.FC = () => {
 
             <div className='flex items-center gap-3.5'>
               <div className='w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center font-bold text-white text-base shadow-md shadow-blue-500/20'>
-                AS
+                {getInitials(student.name)}
               </div>
               <div className='min-w-0'>
                 <h3 className='font-bold text-white text-sm truncate'>{student.name}</h3>

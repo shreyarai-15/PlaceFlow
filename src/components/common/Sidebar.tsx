@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { getInitials } from '../../utils/initials';
 
 interface SidebarProps {
   onCloseMobile?: () => void;
@@ -156,7 +157,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onCloseMobile }) => {
         <div className='flex items-center justify-between p-2 rounded-xl bg-slate-800/60 border border-slate-700/50'>
           <div className='flex items-center gap-2.5 min-w-0'>
             <div className='w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-white text-xs shrink-0'>
-              AS
+              {getInitials(student.name)}
             </div>
             <div className='min-w-0'>
               <div className='flex items-center gap-1.5'>

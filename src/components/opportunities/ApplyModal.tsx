@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Opportunity, Student } from '../../types';
 import { Modal } from '../common/Modal';
 import { CheckCircle2, ShieldAlert, UserCheck } from 'lucide-react';
+import { getInitials } from '../../utils/initials';
 
 interface ApplyModalProps {
   opportunity: Opportunity;
@@ -74,9 +75,14 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
 
         {/* Candidate Profile Snapshot */}
         <div className='p-3.5 sm:p-4 bg-blue-50/60 rounded-2xl border border-blue-100 space-y-2'>
-          <div className='flex items-center gap-1.5 text-xs font-bold text-blue-950'>
-            <UserCheck className='w-4 h-4 text-blue-600' />
-            <span>Verified Candidate Credentials</span>
+          <div className='flex items-center justify-between'>
+            <div className='flex items-center gap-1.5 text-xs font-bold text-blue-950'>
+              <UserCheck className='w-4 h-4 text-blue-600' />
+              <span>Verified Candidate Credentials</span>
+            </div>
+            <div className='w-6 h-6 rounded-lg bg-blue-600 text-white font-bold text-[10px] flex items-center justify-center shrink-0 shadow-xs'>
+              {getInitials(student.name)}
+            </div>
           </div>
           <p className='text-xs text-blue-900/80 leading-relaxed'>
             These verified academic details will be transmitted to {opportunity.company} and logged with the campus placement cell:
@@ -89,7 +95,7 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({
             </div>
             <div className='bg-white p-2 sm:p-2.5 rounded-xl border border-blue-100 shadow-2xs'>
               <span className='text-[10px] text-slate-400 block'>Branch</span>
-              <strong className='text-slate-900 font-bold truncate block'>ECE</strong>
+              <strong className='text-slate-900 font-bold truncate block' title={student.branch}>{student.branch}</strong>
             </div>
             <div className='bg-white p-2 sm:p-2.5 rounded-xl border border-blue-100 shadow-2xs'>
               <span className='text-[10px] text-slate-400 block'>Verified CGPA</span>

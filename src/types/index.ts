@@ -12,6 +12,7 @@ export interface Student {
   skills: string[];
   resumeUrl?: string;
   portfolioUrl?: string;
+  portfolioLink?: string;
 }
 
 export interface Opportunity {

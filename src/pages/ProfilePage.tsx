@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import { getInitials } from '../utils/initials';
 import { Modal } from '../components/common/Modal';
 import {
   User,
@@ -20,6 +21,7 @@ export const ProfilePage: React.FC = () => {
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [name, setName] = useState(student.name);
+  const [email, setEmail] = useState(student.email);
   const [branch, setBranch] = useState(student.branch);
   const [cgpa, setCgpa] = useState(student.cgpa.toString());
   const [backlogs, setBacklogs] = useState(student.backlogs.toString());
@@ -32,7 +34,8 @@ export const ProfilePage: React.FC = () => {
     const parsedGradYear = parseInt(graduationYear, 10) || student.graduationYear;
 
     updateStudent({
-      name,
+      name: name.trim() || student.name,
+      email: email.trim() || student.email,
       branch,
       cgpa: parsedCgpa,
       backlogs: parsedBacklogs,
@@ -47,7 +50,7 @@ export const ProfilePage: React.FC = () => {
       <div className='bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-6'>
         <div className='flex items-center gap-5'>
           <div className='w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold text-xl flex items-center justify-center shadow-md shadow-blue-500/20 shrink-0'>
-            AS
+            {getInitials(student.name)}
           </div>
           <div>
             <div className='flex items-center gap-2'>
@@ -65,6 +68,7 @@ export const ProfilePage: React.FC = () => {
         <button
           onClick={() => {
             setName(student.name);
+            setEmail(student.email);
             setBranch(student.branch);
             setCgpa(student.cgpa.toString());
             setBacklogs(student.backlogs.toString());
@@ -187,6 +191,17 @@ export const ProfilePage: React.FC = () => {
               type='text'
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
+              className='w-full p-2.5 rounded-xl border border-slate-200 outline-none focus:border-blue-500'
+            />
+          </div>
+
+          <div>
+            <label className='block font-semibold text-slate-700 mb-1'>College Email</label>
+            <input
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
               className='w-full p-2.5 rounded-xl border border-slate-200 outline-none focus:border-blue-500'
             />

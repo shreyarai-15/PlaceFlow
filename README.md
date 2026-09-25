@@ -8,6 +8,20 @@ PlaceFlow is a centralized web application designed to simplify the campus place
 It addresses common placement coordination problems such as scattered opportunity information, unclear eligibility criteria, missed deadlines, and limited visibility into application status.
 
 ---
+## Product Preview
+**Note:** PlaceFlow is a portfolio prototype using fictional student, company, and placement data. It is not connected to a real college placement system.
+
+### Student Dashboard
+![PlaceFlow Dashboard](screenshots/dashboard.png)
+
+### Placement Opportunities
+![Placement Opportunities](screenshots/opportunities.png)
+
+### Eligibility Engine
+![Eligibility Engine](screenshots/eligibility.png)
+
+### Application Tracking
+![Application Tracking](screenshots/applications.png)
 
 ## Problem Statement
 
@@ -39,7 +53,7 @@ The first phase focuses on the complete student-side placement experience.
 * Demo student: Aarav Sharma
 * Branch: ECE
 * Graduation Year: 2028
-* Initial CGPA: 8.4
+* Initial CGPA: 9.5
 * Backlogs: 0
 
 

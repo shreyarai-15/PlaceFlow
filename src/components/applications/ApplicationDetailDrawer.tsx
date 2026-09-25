@@ -4,6 +4,8 @@ import { Modal } from '../common/Modal';
 import { ApplicationStatusBadge } from './ApplicationStatusBadge';
 import { ApplicationTimeline } from './ApplicationTimeline';
 import { Calendar, MapPin, IndianRupee, Clock, ExternalLink, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { useApp } from '../../context/AppContext';
+import { getInitials } from '../../utils/initials';
 
 interface ApplicationDetailDrawerProps {
   application: Application | null;
@@ -16,6 +18,7 @@ export const ApplicationDetailDrawer: React.FC<ApplicationDetailDrawerProps> = (
   isOpen,
   onClose,
 }) => {
+  const { student } = useApp();
   if (!application) return null;
 
   return (
@@ -27,6 +30,22 @@ export const ApplicationDetailDrawer: React.FC<ApplicationDetailDrawerProps> = (
       maxWidth='xl'
     >
       <div className='space-y-6'>
+        {/* Applicant Snapshot */}
+        <div className='flex items-center justify-between p-3 bg-blue-50/50 rounded-xl border border-blue-100/80 text-xs'>
+          <div className='flex items-center gap-2.5 min-w-0'>
+            <div className='w-7 h-7 rounded-lg bg-blue-600 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs'>
+              {getInitials(student.name)}
+            </div>
+            <div className='min-w-0'>
+              <span className='font-semibold text-slate-900 block truncate'>{student.name}</span>
+              <span className='text-[11px] text-slate-500 block truncate'>{student.email}</span>
+            </div>
+          </div>
+          <span className='text-[10px] font-semibold text-blue-700 bg-white px-2 py-0.5 rounded-md border border-blue-200 shrink-0'>
+            Applicant
+          </span>
+        </div>
+
         {/* Header Summary */}
         <div className='p-4 bg-slate-50 rounded-2xl border border-slate-200/80 flex flex-wrap items-center justify-between gap-4'>
           <div>

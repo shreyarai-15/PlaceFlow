@@ -44,7 +44,7 @@ export const DashboardPage: React.FC = () => {
             <span>Placement Session 2026-27</span>
           </div>
           <h2 className='text-2xl sm:text-3xl font-extrabold tracking-tight'>
-            Good morning, {student.name.split(' ')[0]} 👋
+            Good morning, {student.name.trim().split(/\s+/)[0] || 'Student'} 👋
           </h2>
           <p className='text-xs sm:text-sm text-blue-100/90 leading-relaxed max-w-xl'>
             Here is what is happening with your placement journey. Track active applications, review upcoming interview schedules, and explore fresh matching drives.

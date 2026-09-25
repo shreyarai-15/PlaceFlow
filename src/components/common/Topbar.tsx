@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, Bell, Search, ShieldCheck } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { getInitials } from '../../utils/initials';
 
 interface TopbarProps {
   onOpenMobileSidebar: () => void;
@@ -79,7 +80,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onOpenMobileSidebar }) => {
           className='flex items-center gap-2 pl-2 border-l border-slate-200 group'
         >
           <div className='w-8 h-8 rounded-xl bg-blue-600 text-white font-semibold text-xs flex items-center justify-center shadow-xs group-hover:ring-2 ring-blue-400 transition-all'>
-            AS
+            {getInitials(student.name)}
           </div>
           <div className='hidden lg:block text-left'>
             <p className='text-xs font-semibold text-slate-900 leading-tight'>{student.name}</p>
